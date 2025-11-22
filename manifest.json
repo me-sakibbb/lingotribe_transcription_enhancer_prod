@@ -4,7 +4,7 @@
   "version": "2.1.0",
   "description": "Professional transcription enhancement with auto-correct, formatting, and smart text tools.",
   "author": "me-sakibbb & NuhalMunawar",
-  "homepage_url": "https://github.com/me-sakibbb/lingotribe_transcription_enhancer",
+  "homepage_url": "https://github.com/me-sakibbb/lingotribe_transcription_enhancer_prod",
   "permissions": [
     "storage",
     "activeTab",
