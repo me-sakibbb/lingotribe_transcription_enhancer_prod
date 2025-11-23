@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Lingotribe Transcription Enhancer</title>
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <span class="logo-icon">🚀</span>
+                    <h1>Lingotribe Admin Panel</h1>
+                </div>
+                <div class="user-section">
+                    <span id="adminEmail" class="admin-email"></span>
+                    <button id="signOutBtn" class="btn-secondary">Sign Out</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Stats Cards -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-info">
+                        <h3 id="totalUsers">0</h3>
+                        <p>Total Users</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <h3 id="activeUsers">0</h3>
+                        <p>Active Users</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-info">
+                        <h3 id="paidUsers">0</h3>
+                        <p>Paid Users</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏳</div>
+                    <div class="stat-info">
+                        <h3 id="pendingPayments">0</h3>
+                        <p>Pending Payments</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Bar -->
+            <div class="action-bar">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search by name, email, or batch...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <button id="addUserBtn" class="btn-primary">
+                    <span>➕</span> Add New User
+                </button>
+                <button id="refreshBtn" class="btn-secondary">
+                    <span>🔄</span> Refresh
+                </button>
+            </div>
+
+            <!-- Users Table -->
+            <div class="table-container">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Batch</th>
+                            <th>Email</th>
+                            <th>Extension ID</th>
+                            <th>Enable Date</th>
+                            <th>Disable Date</th>
+                            <th>Facebook ID</th>
+                            <th>Phone Number</th>
+                            <th>Purchase Type</th>
+                            <th>Payment Method</th>
+                            <th>Payment Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <!-- Users will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loadingIndicator" class="loading-indicator">
+                <div class="spinner"></div>
+                <p>Loading users...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="empty-icon">📭</div>
+                <h3>No Users Found</h3>
+                <p>Add your first user to get started</p>
+            </div>
+        </main>
+
+        <!-- Add/Edit User Modal -->
+        <div id="userModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Add New User</h2>
+                    <button class="close-btn" id="closeModal">&times;</button>
+                </div>
+                <form id="userForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="userName">Name *</label>
+                            <input type="text" id="userName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userBatch">Batch</label>
+                            <input type="text" id="userBatch">
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">Email *</label>
+                            <input type="email" id="userEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userExtensionId">Extension ID</label>
+                            <input type="text" id="userExtensionId">
+                        </div>
+                        <div class="form-group">
+                            <label for="userEnableDate">Enable Date</label>
+                            <input type="date" id="userEnableDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="userDisableDate">Disable Date</label>
+                            <input type="date" id="userDisableDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="userFacebookId">Facebook ID</label>
+                            <input type="text" id="userFacebookId">
+                        </div>
+                        <div class="form-group">
+                            <label for="userPhone">Phone Number</label>
+                            <input type="tel" id="userPhone">
+                        </div>
+                        <div class="form-group">
+                            <label for="userPurchaseType">Purchase Type</label>
+                            <select id="userPurchaseType">
+                                <option value="">Select...</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="yearly">Yearly</option>
+                                <option value="lifetime">Lifetime</option>
+                                <option value="trial">Trial</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="userPaymentMethod">Payment Method</label>
+                            <select id="userPaymentMethod">
+                                <option value="">Select...</option>
+                                <option value="bkash">bKash</option>
+                                <option value="nagad">Nagad</option>
+                                <option value="rocket">Rocket</option>
+                                <option value="bank">Bank Transfer</option>
+                                <option value="card">Credit/Debit Card</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="userPaymentStatus">Payment Status</label>
+                            <select id="userPaymentStatus">
+                                <option value="">Select...</option>
+                                <option value="paid">Paid</option>
+                                <option value="pending">Pending</option>
+                                <option value="failed">Failed</option>
+                                <option value="refunded">Refunded</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-primary" id="saveUserBtn">Save User</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div id="deleteModal" class="modal">
+            <div class="modal-content modal-small">
+                <div class="modal-header">
+                    <h2>Confirm Delete</h2>
+                    <button class="close-btn" id="closeDeleteModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this user?</p>
+                    <p class="warning-text">This action cannot be undone.</p>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancelDeleteBtn">Cancel</button>
+                    <button type="button" class="btn-danger" id="confirmDeleteBtn">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast"></div>
+    </div>
+
+    <script src="firebase-config.js"></script>
+    <script src="auth.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>
