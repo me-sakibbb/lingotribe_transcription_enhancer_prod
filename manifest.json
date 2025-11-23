@@ -5,6 +5,7 @@
   "description": "Professional transcription enhancement with auto-correct, formatting, and smart text tools.",
   "author": "me-sakibbb & NuhalMunawar",
   "homepage_url": "https://github.com/me-sakibbb/lingotribe_transcription_enhancer_prod",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkZqZ0rLkYoQDv80KZijTo97uoxZd8y2KtO15abbHNyOuwr3d8OHwbo2mSRa99dQrUPEvMfs5I9Yx8zhxx3GvWdTgHK99sEbPrYgbwNdaIb48SLDjjTgiea9tc9loZ4BYNUBclpOEwofHAh6QOQvTatxkAOD6I//4fDGvpKQgXHQpSEk+JTe/DNyqBy9MG6VQUn49zmhNodyPrgmR/jgB5+OsK/6CxtZXNViLgfEgaXGSuhOPASlnIH4XFcQXs2v37H9NdKfFwNdOV8QD19osu0oUXTnMsW1W+AMGT5QljTWyH+eEU3i5X7BsrRu4Sw+8GvzV9Ws0LmG+A95r8b2NKQIDAQAB",
   "permissions": [
     "storage",
     "activeTab",
