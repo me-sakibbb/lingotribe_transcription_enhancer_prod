@@ -40,7 +40,7 @@ This extension uses:
 ## 📋 Version
 
 **Version**: 2.1.0  
-**Last Updated**: 2025-11-23
+**Last Updated**: 2025-12-03
 
 ## 👥 Authors
 
